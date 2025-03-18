@@ -23,13 +23,28 @@ function fetchPokemonInfo(pokemon) {
       const pokemonWeight = data.weight;
 
       // crear y mostrar los elementos de informacion del pokemon
-      pokemonInfoContainer.innerHTML = `
-      <h2>${pokemonName}</h2>
-      <img src="${pokemonImage}" alt="${pokemonName}">
-      <p>Tipos: ${pokemonTypes}</p>
-      <p>Altura: ${pokemonHeight}</p>
-      <p>Peso: ${pokemonWeight}</p>`;
-    })
+      pokemonInfoContainer.innerHTML = "";
+      
+        // Crear elementos
+        const nameElement = document.createElement("h2");
+        nameElement.textContent = pokemonName;
+  
+        const imageElement = document.createElement("img");
+        imageElement.src = pokemonImage;
+        imageElement.alt = pokemonName;
+  
+        const typesElement = document.createElement("p");
+        typesElement.textContent = `Tipos: ${pokemonTypes}`;
+  
+        const heightElement = document.createElement("p");
+        heightElement.textContent = `Altura: ${pokemonHeight}`;
+  
+        const weightElement = document.createElement("p");
+        weightElement.textContent = `Peso: ${pokemonWeight}`;
+  
+        // Agregar los elementos al contenedor
+        pokemonInfoContainer.append(nameElement, imageElement, typesElement, heightElement, weightElement);
+      })
     .catch((error) => {
       console.log(error);
       pokemonInfoContainer.innerHTML = 'No se pudo cargar la pagina'
