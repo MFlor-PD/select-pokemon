@@ -25,6 +25,13 @@ function fetchPokemonInfo(pokemon) {
       // crear y mostrar los elementos de informacion del pokemon
       pokemonInfoContainer.innerHTML = "";
       
+      // Limpiar clases anteriores y aplicar la clase del tipo
+      pokemonInfoContainer.className = "";
+      if (data.types && data.types.length > 0) {
+        const mainType = data.types[0].type.name;
+        pokemonInfoContainer.classList.add(`pokemon-type-${mainType}`);
+      }
+      
         // Crear elementos
         const nameElement = document.createElement("h2");
         nameElement.textContent = pokemonName;
